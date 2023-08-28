@@ -1,20 +1,24 @@
 class Review:
     
+    all = []
+    
     def __init__(self, customer, restaurant, rating):
         self._customer = customer
         self._restaurant = restaurant
         self._rating = rating
+        Review.all.append(self)
+        # customer.add_review(self)
         
     def rating(self):
         return self._rating
+          
+    @classmethod
+    def all(cls):
+        return cls.all
     
-    def set_rating(self, value):
-        if type(value) == int:
-            if 0<= value <= 5:
-                self._rating = value
-            else:
-                print("Rating should be between 0 and 5")
-        else:
-            print("Rating should be a number between 0 and 5")
+    def customer(self):
+        return self._customer
     
-    pass
+    def restaurant(self):
+        return self._restaurant
+    
